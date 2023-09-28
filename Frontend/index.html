@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>myPost by Ujjwal Sharma</title>
+    <link rel="stylesheet" href="./styles/prism.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <img style="width: 10%" src="./images/Logo.png" alt="" />
+
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="signin.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="createaccount.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+        <b id="showname" style="color: white"></b>
+        <button id="logoutbtn">Logout</button>
+      </div>
+    </nav>
+    <div class="row marginmain">
+      <div class="col-sm-3 col-form-label history">
+        <table id="query-table">
+          <b> Previous queries </b>
+          <hr />
+          <br />
+          <div id="query-table-body"></div>
+        </table>
+        <img
+          style="width: 80%"
+          src="https://skills-assets.pstmn.io/onboarding/Welcome.svg"
+          alt=""
+        />
+      </div>
+      <div class="col-md-9">
+        <div class="container">
+          <h1 class="my-4">
+            <img
+              style="width: 25%; border-radius: 5px"
+              src="./images/Logo.png"
+              alt=""
+            />
+            Welcome to myPost
+          </h1>
+          <br />
+        </div>
+
+        <div class="container">
+          <!----------------url box Request type box------------>
+          <div class="input-group mb-4">
+            <select class="form-select flex-grow-0 w-auto" data-method>
+              <option value="GET" selected>GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="PATCH">PATCH</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+            <input
+              data-url
+              required
+              class="form-control"
+              type="url"
+              id="urlField"
+              placeholder="https://example.com"
+            />
+            <button id="submit" type="submit" class="btn btn-primary">
+              Send
+            </button>
+          </div>
+          <!---------------------------------------------------------------->
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Content Type</legend>
+
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-form-label col-sm-2 form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="contentType"
+                      id="jsonRadio"
+                      value="json"
+                      checked
+                    />
+                    <label class="form-check-label" for="json">JSON</label>
+                  </div>
+                  <div class="col-form-label col-sm-3 form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="contentType"
+                      id="paramsRadio"
+                      value="params"
+                    />
+                    <label class="form-check-label" for="params">
+                      Query Parameters
+                    </label>
+                  </div>
+                  <div class="col-form-label col-sm-2 form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="contentType"
+                      id="headersRadio"
+                      value="headers"
+                    />
+                    <label class="form-check-label" for="headers">
+                      Headers
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <!---------------------Parameters box-This will hide on clicking json option in content type------->
+          <div id="parametersBox">
+            <div class="row">
+              <label for="url" class="col-sm-2 col-form-label">Parameter</label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Parameter Key"
+                  id="parameterKey1"
+                />
+              </div>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Parameter Value"
+                  id="parameterValue1"
+                />
+              </div>
+
+              <button id="parambtn" class="col-sm-1 btn btn-primary">+</button>
+            </div>
+            <div id="params"></div>
+          </div>
+
+          <!---------------------Headers box-This will hide on clicking json option in content type------->
+          <div id="headersBox">
+            <div class="row">
+              <label for="url" class="col-sm-2 col-form-label">Header</label>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Key"
+                  id="headerKey1"
+                />
+              </div>
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Value"
+                  id="headerValue1"
+                />
+              </div>
+
+              <button id="headerbtn" class="col-sm-1 btn btn-primary">+</button>
+            </div>
+            <div id="headers"></div>
+          </div>
+          <!---------------------JSON request box-this will hide on clicking parameters option in content type------->
+          <div class="my-3" id="requestJsonBox">
+            <div class="row">
+              <label for="requestJsonText" class="col-form-label col-sm-2"
+                >Enter Request Json</label
+              >
+
+              <div class="col-sm-10">
+                <textarea
+                  class="form-control"
+                  id="requestJsonText"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!---------------------submit button triggers fetch api------->
+          <br />
+          <div class="my-3" id="responseJsonBox">
+            <div class="row">
+              <label for="responseJsonText" class="col-form-label col-sm-2"
+                >Response</label
+              >
+
+              <div class="col-sm-10">
+                <!------------------------status time size----=------------>
+                <div class="row">
+                  <div class="me-1 col-form-label col-sm-2">
+                    Status: <span data-status></span>
+                  </div>
+                  <div class="me-1 col-form-label col-sm-2">
+                    Time: <span data-time></span>ms
+                  </div>
+                  <div class="me-1 col-form-label col-sm-2">
+                    Size: <span data-size></span>
+                  </div>
+                </div>
+
+                <!-- <textarea class="form-control" id="responseJsonText" rows="3"></textarea> -->
+                <pre id="responsepre" class="language-javascript">
+<code id="responseJsonText" class="language-javascript"></code>
+          </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./scripts/indexfront.js"></script>
+    <script type="text/javascript" src="./scripts/prism.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
